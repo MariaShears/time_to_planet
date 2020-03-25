@@ -1,6 +1,6 @@
 from app import app
+from . import distance
 
-@app.route('/')
-@app.route('/index')
+@app.route('/v1/planet/mars')
 def index():
-    return "Hello, World!"
+    return distance.get_distance()
