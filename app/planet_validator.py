@@ -11,5 +11,6 @@ VALID_PLANETS = [
     "pluto"
 ]
 
-def validate(planet):
-    return planet == "mars"
+def is_valid(planet):
+    return planet in VALID_PLANETS
+
