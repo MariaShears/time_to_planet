@@ -1,11 +1,12 @@
 import os
 import datetime
 import requests
-
+import json
 
 # Munich
-lon= 11.576124
+lon = 11.576124
 lat = 48.137154
+
 
 # retrives distance to planet via AstronomyAPI
 def get_distance(planet):
@@ -31,17 +32,17 @@ def get_distance(planet):
     return parsed_result[planet]
 
 
+def row_to_distance(row):
+    first_cell = row['cells'][0]
+    planet_id = first_cell['id']
+    distance = first_cell['distance']['from_earth']['km']
+    return distance, planet_id
+
+
 def parse(raw_json):
-    # TODO: parse raw_json and return real values
-    return {
-        "sun": 118957737.83775564,
-        "mercury": 118957737.83775564,
-        "venus": 118957737.83775564,
-        "moon": 118957737.83775564,
-        "mars": 118957737.83775564,
-        "jupiter": 118957737.83775564,
-        "saturn": 118957737.83775564,
-        "uranus": 118957737.83775564,
-        "neptune": 118957737.83775564,
-        "pluto": 118957737.83775564
-    }
+    rows = raw_json['data']['table']['rows']
+    distance_pairs = list(map(row_to_distance, rows))
+    distance_dic = {}
+    for pair in distance_pairs:
+        distance_dic.update({pair[1]: pair[0]})
+    return distance_dic
