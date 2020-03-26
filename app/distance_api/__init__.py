@@ -1,17 +1,46 @@
 import os
+import datetime
+import requests
 
-app_id = os.environ.get('ASTRONOMYAPI_ID', '')
-app_secret = os.environ.get('ASTRONOMYAPI_KEY', '')
+# AstronomyAPI creds
+jwt_token = os.environ.get('ASTRONOMYAPI_JWT', '')
 
 # Munich
-# lon= 11.576124
-# lat = 48.137154
+lon= 11.576124
+lat = 48.137154
 
-# from_year=2020
-# from_month=1
-# from_day=1
-# to_year=2020
-# to_month=1
-# to_day=2
+# retrives distance to planet via AstronomyAPI
+def get_distance(planet):
+    now = datetime.datetime.now()
+    yesterday = now - datetime.timedelta(days=1)
+    payload = {
+        'lon': lon,
+        'lat': lat,
+        'to_year': now.year,
+        'to_month': now.month,
+        'to_day': now.day,
+        'from_year': yesterday.year,
+        'from_month': yesterday.month,
+        'from_day': yesterday.day
+    }
+    headers = {'authorization': "Bearer %s" % jwt_token}
+    r = requests.get('http://localhost:3000/positions', params=payload, headers=headers)
+    raw_json = r.json()
+    parsed_result = parse(raw_json)
+    return parsed_result[planet]
 
-# --header 'authorization: Bearer JWT_TOKEN
+
+def parse(raw_json):
+    # TODO: parse raw_json and return real values
+    return {
+        "sun": 118957737.83775564,
+        "mercury": 118957737.83775564,
+        "venus": 118957737.83775564,
+        "moon": 118957737.83775564,
+        "mars": 118957737.83775564,
+        "jupiter": 118957737.83775564,
+        "saturn": 118957737.83775564,
+        "uranus": 118957737.83775564,
+        "neptune": 118957737.83775564,
+        "pluto": 118957737.83775564
+    }

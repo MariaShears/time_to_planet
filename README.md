@@ -7,7 +7,19 @@ solar system.
 
 time_to_planet is a micro python flask api
 
+Currently the api is basically a wrapper over the http://astronomyapi.org. In the future we may
+calculate the distance from earth to planets ourselves.
+
 ## Dev
+
+### Links
+
+Helpful links:
+
+- https://flask.palletsprojects.com/en/1.1.x/
+- https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
+
+### ClI Commands
 
 **Run app:**
 
