@@ -3,7 +3,7 @@ import json
 
 from . import parse
 
-class TestDistanceAPIParse(unittest.TestCase):
+class TestDistanceAPI(unittest.TestCase):
     def test_parse(self):
         raw_json = "";
         with open('./app/distance_api/mock_data.json') as f:
@@ -20,5 +20,5 @@ class TestDistanceAPIParse(unittest.TestCase):
             "neptune": 4621695743.049282,
             "pluto": 5138408053.535285
         }
-        result = parse.parse(raw_json)
+        result = parse(raw_json)
         self.assertEqual(result, expected_result)
