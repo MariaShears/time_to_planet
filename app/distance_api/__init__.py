@@ -2,9 +2,6 @@ import os
 import datetime
 import requests
 
-# AstronomyAPI creds
-jwt_token = os.environ['ASTRONOMYAPI_JWT']
-api_url = os.environ['ASTRONOMYAPI_URL']
 
 # Munich
 lon= 11.576124
@@ -12,6 +9,8 @@ lat = 48.137154
 
 # retrives distance to planet via AstronomyAPI
 def get_distance(planet):
+    jwt_token = os.environ['ASTRONOMYAPI_JWT']
+    api_url = os.environ['ASTRONOMYAPI_URL']
     now = datetime.datetime.now()
     yesterday = now - datetime.timedelta(days=1)
     payload = {
