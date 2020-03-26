@@ -5,7 +5,7 @@ from . import parse
 
 class TestDistanceAPI(unittest.TestCase):
     def test_parse(self):
-        raw_json = "";
+        raw_json = ""
         with open('./app/distance_api/mock_data.json') as f:
             raw_json = json.load(f)
         expected_result = {
@@ -15,7 +15,7 @@ class TestDistanceAPI(unittest.TestCase):
             "moon": 407445.55591713585,
             "mars": 228111103.1515586,
             "jupiter": 814494981.5786254,
-            "saturn": 1499756688.9622102,
+            "saturn": 1559951962.544126,
             "uranus": 3090229927.5256147,
             "neptune": 4621695743.049282,
             "pluto": 5138408053.535285

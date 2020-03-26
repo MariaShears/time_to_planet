@@ -63,3 +63,9 @@ we use a node module, json-server.
 ```shell
 $ npx json-server --watch astronomy_api_mock.json
 ```
+
+**Install existing packages:**
+
+```shell
+$ pipenv sync
+```
