@@ -3,7 +3,8 @@ import datetime
 import requests
 
 # AstronomyAPI creds
-jwt_token = os.environ.get('ASTRONOMYAPI_JWT', '')
+jwt_token = os.environ['ASTRONOMYAPI_JWT']
+api_url = os.environ['ASTRONOMYAPI_URL']
 
 # Munich
 lon= 11.576124
@@ -24,7 +25,8 @@ def get_distance(planet):
         'from_day': yesterday.day
     }
     headers = {'authorization': "Bearer %s" % jwt_token}
-    r = requests.get('http://localhost:3000/positions', params=payload, headers=headers)
+    url = "%s/positions" % api_url
+    r = requests.get(url, params=payload, headers=headers)
     raw_json = r.json()
     parsed_result = parse(raw_json)
     return parsed_result[planet]
