@@ -70,3 +70,9 @@ $ npx json-server --watch astronomy_api_mock.json
 ```shell
 $ pipenv sync
 ```
+
+**Format Code:**
+
+```shell
+$ autopep8 --in-place --aggressive --aggressive ./app/**/*.py
+```
