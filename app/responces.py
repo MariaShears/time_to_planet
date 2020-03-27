@@ -3,6 +3,7 @@ def error_resp(reason):
         "error": reason
     }
 
+
 def success_resp(seconds, planet):
     return {
         "from": "earth",

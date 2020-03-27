@@ -5,11 +5,13 @@ import datetime
 
 from app import distance_api
 
+
 def get_test_data():
     raw_json = ""
     with open('./app/distance_api/mock_data.json') as f:
         raw_json = json.load(f)
     return raw_json
+
 
 class FakeRequest:
     def __init__(self, raw_json):
@@ -17,6 +19,7 @@ class FakeRequest:
 
     def json(self):
         return self.raw_json
+
 
 class TestDistanceAPI(TestCase):
     def test_parse(self):
@@ -36,14 +39,18 @@ class TestDistanceAPI(TestCase):
         result = distance_api.parse(raw_json)
         self.assertEqual(result, expected_result)
 
-    @mock.patch.dict(os.environ, {'ASTRONOMYAPI_JWT':'test_jwt', 'ASTRONOMYAPI_URL': 'http://localhost'})
+    @mock.patch.dict(os.environ,
+                     {'ASTRONOMYAPI_JWT': 'test_jwt',
+                      'ASTRONOMYAPI_URL': 'http://localhost'})
     def test_distance_api_params(self):
         dt = datetime.date(2003, 12, 29)
         params = distance_api.DistanceAPIParams(dt)
         hashed_params = params.get_hash()
         self.assertEqual(hashed_params, "9ef833ddf39ff36fcd04e05bbde68782")
 
-    @mock.patch.dict(os.environ, {'ASTRONOMYAPI_JWT':'test_jwt', 'ASTRONOMYAPI_URL': 'http://localhost'})
+    @mock.patch.dict(os.environ,
+                     {'ASTRONOMYAPI_JWT': 'test_jwt',
+                      'ASTRONOMYAPI_URL': 'http://localhost'})
     def test_get_distance(self):
         with mock.patch('app.distance_api.sqlite3') as sqlite3_mock:
             sqlite3_mock.connect().cursor().fetchone.return_value = None
@@ -52,4 +59,3 @@ class TestDistanceAPI(TestCase):
                 requests_mock.get.return_value = FakeRequest(test_data)
                 d = distance_api.get_distance('moon')
                 self.assertEqual(d, 407445.55591713585)
-

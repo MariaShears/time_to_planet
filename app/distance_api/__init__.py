@@ -62,12 +62,16 @@ def get_distance(planet):
     distance = 0
     if db_cache is None:
         # get distances from the remote api
-        r = requests.get(params.url, params=params.query_params, headers=params.headers)
+        r = requests.get(
+            params.url,
+            params=params.query_params,
+            headers=params.headers)
         raw_json = r.json()
         parsed_result = parse(raw_json)
         # cache parsed_result
         pickled_results = pickle.dumps(parsed_result)
-        c.execute('INSERT INTO cache (cache_key, data) VALUES (?,?)', (current_hash, pickled_results))
+        c.execute('INSERT INTO cache (cache_key, data) VALUES (?,?)',
+                  (current_hash, pickled_results))
         distance = parsed_result[planet]
     else:
         un_pickled_results = pickle.loads(db_cache[1])
@@ -76,7 +80,6 @@ def get_distance(planet):
     conn.commit()
     conn.close()
     return distance
-
 
 
 def row_to_distance(row):
@@ -93,4 +96,3 @@ def parse(raw_json):
     for pair in distance_pairs:
         distance_dic.update({pair[1]: pair[0]})
     return distance_dic
-
