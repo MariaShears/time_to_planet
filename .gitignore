@@ -3,3 +3,4 @@ venv
 .idea
 .env
 .env.prod
+api_cache.db
