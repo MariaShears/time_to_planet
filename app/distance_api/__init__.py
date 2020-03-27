@@ -12,10 +12,9 @@ lat = 48.137154
 
 
 class DistanceAPIParams:
-    def __init__(self):
+    def __init__(self, now):
         jwt_token = os.environ['ASTRONOMYAPI_JWT']
         api_url = os.environ['ASTRONOMYAPI_URL']
-        now = datetime.datetime.now()
         yesterday = now - datetime.timedelta(days=1)
         self.url = "%s/positions" % api_url
         self.headers = {'authorization': "Bearer %s" % jwt_token}
@@ -45,7 +44,8 @@ class DistanceAPIParams:
 # retrives distance to planet via AstronomyAPI
 def get_distance(planet):
     # get current api params that include things like todays date
-    params = DistanceAPIParams()
+    now = datetime.datetime.now()
+    params = DistanceAPIParams(now)
     # get the hash of these values which is used as a cache key
     current_hash = params.get_hash()
 

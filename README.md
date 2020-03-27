@@ -18,6 +18,7 @@ Helpful links:
 
 - https://flask.palletsprojects.com/en/1.1.x/
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
+- https://learnxinyminutes.com/docs/python
 
 ### ClI Commands
 
