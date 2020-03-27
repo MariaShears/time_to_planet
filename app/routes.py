@@ -12,4 +12,5 @@ def index(planet):
     safe_planet = safe_planet.lower()
     if not planet_validator.is_valid(safe_planet):
         return responces.error_resp("%s is not a planet" % safe_planet), 404
-    return responces.success_resp(distance_to_time.get_time(safe_planet), safe_planet)
+    return responces.success_resp(
+        distance_to_time.get_time(safe_planet), safe_planet)

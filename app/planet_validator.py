@@ -11,6 +11,6 @@ VALID_PLANETS = [
     "pluto"
 ]
 
+
 def is_valid(planet):
     return planet in VALID_PLANETS
-
