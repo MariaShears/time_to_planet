@@ -44,20 +44,19 @@ class DistanceAPIParams:
 
 # retrives distance to planet via AstronomyAPI
 def get_distance(planet):
+    # get current api params that include things like todays date
     params = DistanceAPIParams()
+    # get the hash of these values which is used as a cache key
     current_hash = params.get_hash()
 
     # check db for current cache key
     conn = sqlite3.connect('api_cache.db')
     c = conn.cursor()
-
     # Create table if it does not exist
     c.execute('''CREATE TABLE IF NOT EXISTS cache
              (cache_key text, data blob)''')
-
     # check db for cached value
-    current_hash_safe = (current_hash,)
-    c.execute('SELECT * FROM cache WHERE cache_key=?', current_hash_safe)
+    c.execute('SELECT * FROM cache WHERE cache_key=?', (current_hash,))
     db_cache = c.fetchone()
 
     distance = 0
