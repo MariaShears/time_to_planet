@@ -3,6 +3,8 @@
 An api for that calculates the time it would take for a message sent from Earth to a planet in our
 solar system.
 
+> you can check the [CHANGELOG](CHANGELOG.md) to see all the releases
+
 ## Tech
 
 time_to_planet is a micro python flask api
@@ -20,7 +22,24 @@ Helpful links:
 - https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-ii-templates
 - https://learnxinyminutes.com/docs/python
 
-### ClI Commands
+### Versioning
+
+This api is visioned with following the [Semantic Versioning](https://semver.org) convention.
+Versions can be seen in the [CHANGELOG](CHANGELOG.md) or under [tags](/tags). In order to make this
+possible we ask our developers to:
+
+- Follow [conventionalcommits](https://www.conventionalcommits.org/) convention when committing
+    - ex. feat(caching): add second cache key
+    - ex. fix(time_calc): multiple to get seconds
+    - ex. docs: init README.md
+    - ex. refactor: init pprint module for printing json
+    - ex. test(remote_api): test valid cache flow
+    - ex. deploy(0.0.1): ship mvp
+- If PR makes significant changes bump version
+- When bumping version make sure to update [CHANGELOG](CHANGELOG.md) and apply tag to deploy commit that updates [deployment.yml](deploy/deployment.yml)
+    - ex. deploy(0.0.1): ship mvp
+
+### CLI Commands
 
 **Run app:**
 
