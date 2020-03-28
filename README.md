@@ -75,6 +75,12 @@ $ python -m unittest
 $ pipenv install requests
 ```
 
+Then afterward update the [requirements.txt](requirements.txt) with 
+
+```shell
+$ pip freeze > requirements.txt
+```
+
 **Running mock astronomyapi server:**
 
 Currently we get out distance numbers to calculate time from an external api. To mock this on local
