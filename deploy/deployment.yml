@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: time_to_planet
+    tier: api
+  name: time-to-planet
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: time_to_planet
+      tier: api
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: time_to_planet
+        tier: api
+    spec:
+      containers:
+      - env:
+        - name: ASTRONOMYAPI_ID
+          valueFrom:
+            configMapKeyRef:
+              key: ASTRONOMYAPI_ID
+              name: time-to-planet-config
+        - name: ASTRONOMYAPI_KEY
+          valueFrom:
+            configMapKeyRef:
+              key: ASTRONOMYAPI_KEY
+              name: time-to-planet-config
+        - name: ASTRONOMYAPI_JWT
+          valueFrom:
+            configMapKeyRef:
+              key: ASTRONOMYAPI_JWT
+              name: time-to-planet-config
+        - name: ASTRONOMYAPI_URL
+          valueFrom:
+            configMapKeyRef:
+              key: ASTRONOMYAPI_URL
+              name: time-to-planet-config
+        image: registry.gitlab.com/btbtravis/time_to_planet:0.0.1
+        imagePullPolicy: IfNotPresent
+        name: time-to-planet-api
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        resources: {}
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: time-to-planet-gitlab
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

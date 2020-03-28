@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: time_to_planet
+    tier: api
+  name: time-to-planet
+  namespace: default
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: time_to_planet
+    tier: api
+  sessionAffinity: None
+  type: ClusterIP
