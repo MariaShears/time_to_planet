@@ -24,19 +24,22 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                required:
-                  - from
-                  - to
-                  - seconds
-                properties:
-                  from:
-                    type: string
-                    example: earth
-                  to:
-                    type: string
-                    example: mars
-                  seconds:
-                    type: integer
-                    format: int64
-                    example: 749
+                $ref: '#/components/schemas/Distance'
+
+components:
+  schemas:
+    Distance:
+      properties:
+        from:
+          type: string
+          example: earth
+        to:
+          type: string
+          example: mars
+        seconds:
+          type: integer
+          example: 749
+      required:
+        - from
+        - to
+        - seconds

@@ -13,7 +13,7 @@ Class | Method | HTTP request | Description
 <a name="documentation-for-models"></a>
 ## Documentation for Models
 
- - [InlineResponse200](.//Models/InlineResponse200.md)
+ - [Distance](.//Models/Distance.md)
 
 
 <a name="documentation-for-authorization"></a>
