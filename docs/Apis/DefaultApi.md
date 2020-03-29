@@ -4,12 +4,12 @@ All URIs are relative to *http://time-to-planet-api.travisshears.xyz/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**planetPlanetGet**](DefaultApi.md#planetPlanetGet) | **GET** /planet/{planet} | Returns time in second to planet to send message to planet
+[**getDuration**](DefaultApi.md#getDuration) | **GET** /planet/{planet} | Returns time in second to planet to send message to planet
 
 
-<a name="planetPlanetGet"></a>
-# **planetPlanetGet**
-> inline_response_200 planetPlanetGet(planet)
+<a name="getDuration"></a>
+# **getDuration**
+> inline_response_200 getDuration(planet)
 
 Returns time in second to planet to send message to planet
 

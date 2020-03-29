@@ -7,7 +7,7 @@ All URIs are relative to *http://time-to-planet-api.travisshears.xyz/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*DefaultApi* | [**planetPlanetGet**](Apis/DefaultApi.md#planetplanetget) | **GET** /planet/{planet} | Returns time in second to planet to send message to planet
+*DefaultApi* | [**getDuration**](Apis/DefaultApi.md#getduration) | **GET** /planet/{planet} | Returns time in second to planet to send message to planet
 
 
 <a name="documentation-for-models"></a>

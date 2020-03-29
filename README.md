@@ -39,6 +39,23 @@ possible we ask our developers to:
 - When bumping version make sure to update [CHANGELOG](CHANGELOG.md) and apply tag to deploy commit that updates [deployment.yml](deploy/deployment.yml)
     - ex. deploy(0.0.1): ship mvp
 
+### Generate API documentation
+
+The API documentation lives right here in the repo under the [docs](docs) folder.
+
+It is based off our [open_api_doc.yaml](open_api_doc.yaml) file and generated with the following
+command:
+
+
+```shell
+openapi-generator generate -i open_api_doc.yaml -g markdown -o ./docs
+```
+
+Documentation tooling links:
+
+- https://swagger.io/docs/specification/basic-structure/
+- https://openapi-generator.tech/docs/generators/
+
 ### CLI Commands
 
 **Run app:**

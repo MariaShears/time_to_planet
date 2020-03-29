@@ -10,6 +10,7 @@ paths:
   /planet/{planet}:
     get:
       summary: Returns time in second to planet to send message to planet
+      operationId: getDuration
       parameters:
         - name: planet
           in: path
@@ -24,6 +25,10 @@ paths:
             application/json:
               schema:
                 type: object
+                required:
+                  - from
+                  - to
+                  - seconds
                 properties:
                   from:
                     type: string
