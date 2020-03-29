@@ -31,12 +31,15 @@ components:
     Distance:
       properties:
         from:
+          description: from which planet is the message being sent?
           type: string
           example: earth
         to:
+          description: to which planet is the message being sent?
           type: string
           example: mars
         seconds:
+          description: The time is seconds to send a message to the planet
           type: integer
           example: 749
       required:
