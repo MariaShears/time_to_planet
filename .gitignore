@@ -4,3 +4,4 @@ venv
 .env
 .env.prod
 api_cache.db
+deploy/configmap.yml

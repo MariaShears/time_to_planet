@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  ASTRONOMYAPI_ID: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ASTRONOMYAPI_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ASTRONOMYAPI_JWT: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  ASTRONOMYAPI_URL: http://api.astronomyapi.org
+kind: ConfigMap
+metadata:
+  labels:
+    app: time_to_planet
+    tier: api
+  name: time-to-planet-config
+  namespace: default
