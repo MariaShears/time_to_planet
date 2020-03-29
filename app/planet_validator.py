@@ -13,4 +13,5 @@ VALID_PLANETS = [
 
 
 def is_valid(planet):
+    """Returns if the planet exist in the plants AstronomyAPI supports"""
     return planet in VALID_PLANETS

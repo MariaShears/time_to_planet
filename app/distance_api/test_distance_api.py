@@ -7,6 +7,7 @@ from app import distance_api
 
 
 def get_test_data():
+    """returns the json responce of AstronomyAPI loaded from a static file"""
     raw_json = ""
     with open('./app/distance_api/mock_data.json') as f:
         raw_json = json.load(f)
