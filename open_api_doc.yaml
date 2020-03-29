@@ -1,0 +1,48 @@
+openapi: 3.0.0
+info:
+  title: Time to Planet API
+  description: API that calculates time to send messages from earth to planets in our solar system
+  version: 0.0.1
+servers:
+  - url: http://time-to-planet-api.travisshears.xyz/v1
+    description: Production Server
+paths:
+  /planet/{planet}:
+    get:
+      summary: Returns time in second to planet to send message to planet
+      operationId: getDuration
+      parameters:
+        - name: planet
+          in: path
+          required: true
+          description: planet -- mars, venus, jupiter
+          schema:
+            type : string
+      responses:
+        '200':
+          description: A JSON object containing distance seconds and planets
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Distance'
+
+components:
+  schemas:
+    Distance:
+      properties:
+        from:
+          description: from which planet is the message being sent?
+          type: string
+          example: earth
+        to:
+          description: to which planet is the message being sent?
+          type: string
+          example: mars
+        seconds:
+          description: The time is seconds to send a message to the planet
+          type: integer
+          example: 749
+      required:
+        - from
+        - to
+        - seconds
