@@ -1,4 +1,5 @@
 def error_resp(reason):
+    """Default responce json responce in case of error"""
     return {
         "error": reason
     }

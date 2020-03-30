@@ -30,6 +30,7 @@ class DistanceAPIParams:
         }
 
     def get_hash(self):
+        """Returns a hash of the url, headers, and query_params."""
         dic = {
             'url': self.url,
             'headers': self.headers,
@@ -41,8 +42,8 @@ class DistanceAPIParams:
         return hex_val
 
 
-# retrives distance to planet via AstronomyAPI
 def get_distance(planet):
+    """Returns retrives distance to planet via AstronomyAPI"""
     # get current api params that include things like todays date
     now = datetime.datetime.now()
     params = DistanceAPIParams(now)
@@ -83,6 +84,7 @@ def get_distance(planet):
 
 
 def row_to_distance(row):
+    """converts a row of AstronomyAPI responce to a distance number"""
     first_cell = row['cells'][0]
     planet_id = first_cell['id']
     distance = first_cell['distance']['from_earth']['km']
@@ -90,6 +92,7 @@ def row_to_distance(row):
 
 
 def parse(raw_json):
+    """parses the raw AstronomyAPI responce dic of key: planet_id,  value: distance int"""
     rows = raw_json['data']['table']['rows']
     distance_pairs = list(map(row_to_distance, rows))
     distance_dic = {}
